@@ -1,0 +1,19 @@
+.wd-tuit-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    align-items: flex-end;
+  }
+.wd-tuit-like-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+.wd-tuit-title, .wd-tuit-heading{
+    font-weight: bold;
+    color: #000000;
+  }
+.wd-tuit-date {
+    margin-left: auto; /* Add margin-left:auto to push the element to the right */
+  }
