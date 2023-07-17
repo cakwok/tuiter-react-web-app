@@ -1,0 +1,79 @@
+.wd-tuit-list {
+    list-style-type: none;
+    padding: 12;
+  }
+.wd-tuit {
+    border: 1px solid #dddddd;
+    padding: 12px;    
+  }
+.wd-tuit-content {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .wd-tuit-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    align-items: flex-end;
+  }
+    .wd-tuit-title, .wd-tuit-heading{
+    font-weight: bold;
+    color: #000000;
+  }
+  .wd-tuit-username, .wd-tuit-date, .wd-tuit-source{
+    color: #888888;
+  }
+  .wd-tuit-date {
+    margin-left: auto; /* Add margin-left:auto to push the element to the right */
+  }
+  .wd-tuit-source{
+    padding: 12px
+  }
+  .wd-tuit-heading {
+    margin-top: -10px;
+    margin-left:12px;
+  }
+  .wd-tuit-message p {
+    margin-left: 40;
+    margin-top: -3px; /* Adjust the negative margin to move the element upward */
+  }
+  .wd-tuit-message2 {
+    margin-left: 12px;
+    margin-top: 4px
+  }
+  .wd-tuit-images{
+    border: 1px solid silver;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-left: 40;
+  }
+  .wd-tuit-images img{
+    width: 100%
+  }
+  .wd-image_descr{
+    border: 1px solid silver;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: 40;
+    
+  }
+  .wd-tuit-like-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  .wd-tabs {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin-left: 40;
+    margin-top:  10px;
+
+  }
+  
+.wd-tabs li {
+    margin-right: 150px;
+  }
+
