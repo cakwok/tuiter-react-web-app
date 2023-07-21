@@ -3,6 +3,7 @@ import VariableTypes from "./variable-types.js";
 import BooleanVariables from "./boolean-variables.js";
 import IfElse from "./if-else.js";
 import TernaryOperator from "./ternary-operator.js"
+import WorkingWithFunctions from "./workingwithfunctions.js"
 
 function JavaScript() {
     console.log('Hello World!');
@@ -14,6 +15,7 @@ function JavaScript() {
           <BooleanVariables/>
           <IfElse/>
           <TernaryOperator/>
+          <WorkingWithFunctions/>
        </div>
     );
  }
