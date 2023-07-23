@@ -7,8 +7,14 @@ import BookmarksScreen from "./bookmarks-screen";
 import ProfileScreen from "./profile-screen";
 import WhoToFollowListItem from "./who-to-follow-list/who-to-follow-list-item";
 import WhoToFollowList from "./who-to-follow-list";
+import TuitSummaryList from "./tuit-summary-list/index.js";
+import {useLocation } from "react-router-dom";
+
 
 function Tuiter() {
+   const { pathname } = useLocation();
+   const [ignore, tuiter, active] = pathname.split("/");
+
     return(
        <div>
             <Nav/>
@@ -23,7 +29,8 @@ function Tuiter() {
                      <Route path="/bookmarks" element={<BookmarksScreen />} />
                      <Route path="/profile" element={<ProfileScreen />} />
                   </Routes>
-                  <ExploreScreen/>
+                  {active !== 'explore' && <TuitSummaryList />}
+               
                </div>
                <div className="col-3">
                   <WhoToFollowList />
