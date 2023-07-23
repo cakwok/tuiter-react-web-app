@@ -1,7 +1,10 @@
+import Nav from "../nav";
+
 function Tuiter() {
     return(
        <div>
-          <h1>Tuiter</h1>
+            <Nav/>
+            <h1>Tuiter</h1>
        </div>
     );
  }
