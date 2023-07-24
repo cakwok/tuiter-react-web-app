@@ -30,6 +30,9 @@ function WorkingWithArrays() {
     return (
        <div>
             <h3>Working with Arrays</h3>
+            numberArray1 = {numberArray1.join('')}<br/>
+            stringArray1 = {stringArray1.join('')}<br/>
+            variableArray1 = {variableArray1.join('')}<br/>
             <ArrayIndexAndLength />
             <AddingAndRemovingDataToFromArrays/>
             <ForLoops/>
