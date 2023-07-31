@@ -1,5 +1,5 @@
 import React from "react";
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaComment, FaRetweet, FaRegHeart, FaShare } from 'react-icons/fa';
 
 const TuitItem = (
  {
@@ -14,6 +14,7 @@ const TuitItem = (
  }
 ) => {
  return(
+  
   <li className="list-group-item">
    <div className="row">
      <div className="col-2">
@@ -21,14 +22,28 @@ const TuitItem = (
      </div>
      <div className="col-10">
        <div>{tuit.userName} {' '}
-        <FaCheckCircle />{' '}
-        {tuit.handle}{' '}. {' '}
-        {tuit.time}
+          <FaCheckCircle />{' '}
+          {tuit.handle}{' '}. {' '}
+          {tuit.time}
        </div>
        <div className="fw-bolder">{tuit.topic}</div>
        <div>{tuit.title}</div>
      </div>
-
+   </div>
+   <div className="row" style={{ marginTop: '20px' }}>
+     <div className="col-2"></div>
+     <div className="col-2">
+        <span><FaComment />  </span>{tuit.replies} 
+     </div>
+     <div className="col-2">
+        <span><FaRetweet />  </span>{tuit.retuits} 
+     </div>
+     <div className="col-2">
+        <span><FaRegHeart />  </span>{tuit.likes} 
+     </div>
+     <div className="col-2">
+        <span><FaShare />  </span> 
+     </div>
    </div>
   </li>
  );
