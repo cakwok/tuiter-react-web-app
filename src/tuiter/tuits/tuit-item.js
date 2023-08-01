@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import { FaCheckCircle, FaComment, FaRetweet, FaRegHeart, FaHeart, FaShare } from 'react-icons/fa';
 import {useDispatch} from "react-redux";
 import { deleteTuit } from "./tuits-reducer"; 
-import { FaTimes } from 'react-icons/fa';
+import {IoCloseOutline} from "react-icons/io5";
 import TuitStats from "./tuit-stats"
 
 const TuitItem = ({ tuit }) => {
@@ -23,7 +23,7 @@ const TuitItem = ({ tuit }) => {
           <FaCheckCircle />{' '}
           {tuit.handle}{' '}. {' '}
           {tuit.time}
-          <FaTimes className="me-3 float-end" onClick={() => deleteTuitHandler(tuit._id)}/> 
+          <IoCloseOutline className="me-3 float-end" onClick={() => deleteTuitHandler(tuit._id)}/> 
 
        </div>
        <div className="fw-bolder">{tuit.topic}</div>
