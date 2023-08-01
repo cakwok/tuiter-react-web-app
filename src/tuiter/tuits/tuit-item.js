@@ -1,18 +1,28 @@
-import React from "react";
-import { FaCheckCircle, FaComment, FaRetweet, FaRegHeart, FaShare } from 'react-icons/fa';
+import React, { useState} from "react";
+import { FaCheckCircle, FaComment, FaRetweet, FaRegHeart, FaHeart, FaShare } from 'react-icons/fa';
+import {useDispatch} from "react-redux";
+import { deleteTuit } from "./tuits-reducer"; 
+import { FaTimes } from 'react-icons/fa';
 
-const TuitItem = (
- {
-   tuit = {
-     "topic": "Space",
-     "userName": "SpaceX",
-     "time": "2h",
-     "title": `Tesla CyberTruck lands on Mars and
-               picks up the Curiosity rover on its 6' bed`,
-     "image": "tesla.jpg"
-   }
- }
-) => {
+const TuitItem = ({ tuit }) => {
+  const [liked, setLiked] = useState(tuit.liked);
+  const [likes, setLikes] = useState(tuit.likes);
+
+  const handleLikeClick = () => {
+    if (liked) {
+      setLiked(false);
+      setLikes(likes - 1);
+    } else {
+      setLiked(true);
+      setLikes(likes + 1);
+    }
+  };
+
+  const dispatch = useDispatch();
+  const deleteTuitHandler = (id) => {
+    dispatch(deleteTuit(id));
+}
+
  return(
   
   <li className="list-group-item">
@@ -25,11 +35,14 @@ const TuitItem = (
           <FaCheckCircle />{' '}
           {tuit.handle}{' '}. {' '}
           {tuit.time}
+          <FaTimes className="me-3 float-end" onClick={() => deleteTuitHandler(tuit._id)}/> 
+
        </div>
        <div className="fw-bolder">{tuit.topic}</div>
-       <div>{tuit.title}</div>
+       <div>{tuit.tuit}</div>
      </div>
    </div>
+   
    <div className="row" style={{ marginTop: '20px' }}>
      <div className="col-2"></div>
      <div className="col-2">
@@ -39,7 +52,11 @@ const TuitItem = (
         <span><FaRetweet />  </span>{tuit.retuits} 
      </div>
      <div className="col-2">
-        <span><FaRegHeart />  </span>{tuit.likes} 
+        <span>
+          {liked ? (<FaHeart style={{ color: 'red', cursor: 'pointer'}} 
+                              onClick={handleLikeClick} />) : (
+                    <FaRegHeart style={{ color: 'red', cursor: 'pointer'}} 
+                                onClick={handleLikeClick} />)}  </span>{likes} 
      </div>
      <div className="col-2">
         <span><FaShare />  </span> 

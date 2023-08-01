@@ -13,7 +13,8 @@ import {useLocation } from "react-router-dom";
 
 import React from "react";
 import whoReducer from "./reducers/who-reducer";
-import tuitsReducer from "./reducers/tuits-reducer";
+/*import tuitsReducer from "./reducers/tuits-reducer";*/
+import tuitsReducer from "./tuits/tuits-reducer";
 import { configureStore } from '@reduxjs/toolkit';
 import {Provider} from "react-redux";
 
@@ -42,7 +43,7 @@ function Tuiter() {
                   {/*Assignment3 
                   {active !== 'explore' && <TuitSummaryList />}
                   */}
-                  {active !== 'explore' && <TuitList />}
+              
                </div>
                <div className="col-3">
                   <WhoToFollowList />
