@@ -1,14 +1,14 @@
 import React, { useState} from "react";
 import { FaCheckCircle, FaComment, FaRetweet, FaRegHeart, FaHeart, FaShare } from 'react-icons/fa';
 import {useDispatch} from "react-redux";
-import { deleteTuit } from "./tuits-reducer"; 
+import {deleteTuitThunk} from "../services/tuits-thunks";
 import {IoCloseOutline} from "react-icons/io5";
 import TuitStats from "./tuit-stats"
 
 const TuitItem = ({ tuit }) => {
   const dispatch = useDispatch();
   const deleteTuitHandler = (id) => {
-    dispatch(deleteTuit(id));
+    dispatch(deleteTuitThunk(id));
 }
 
  return(
@@ -24,7 +24,6 @@ const TuitItem = ({ tuit }) => {
           {tuit.handle}{' '}. {' '}
           {tuit.time}
           <IoCloseOutline className="me-3 float-end" onClick={() => deleteTuitHandler(tuit._id)}/> 
-
        </div>
        <div className="fw-bolder">{tuit.topic}</div>
        <div>{tuit.tuit}</div>
