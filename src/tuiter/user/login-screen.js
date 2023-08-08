@@ -11,10 +11,11 @@ function LoginScreen() {
  const handleLogin = async () => {
   try {
     await dispatch(loginThunk({ username, password }));
-    console.log(username);
+    console.log("login-screen");
     navigate("/tuiter/profile");
   } catch (e) {
-    alert(e);
+    alert("Username or password is incorrect");
+   
   }
  };
  return (

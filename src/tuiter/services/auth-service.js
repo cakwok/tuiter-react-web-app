@@ -6,14 +6,22 @@ const USERS_URL = `${SERVER_API_URL}/users`;
 const api = axios.create({ withCredentials: true });
 
 export const login = async ({ username, password }) => {
- const response = await api.post(`${USERS_URL}/login`, { username, password });
- const user = response.data;
- return user;
+ console.log("auth-service");
+ try {
+    const response = await api.post(`${USERS_URL}/login`, { username, password });
+    const user = response.data;
+    console.log("auth-service", user);
+    return user;
+ } catch (e) {
+    console.log("auth-service catch");
+    throw e;
+ }
 };
 
 export const register = async ({ username, password }) => {
-    const response = await api.post(`${USERS_URL}/register`, { username });
+    const response = await api.post(`${USERS_URL}/register`, { username, password });
     const user = response.data;
+    console.log("user", user);
     return user;
 };
 

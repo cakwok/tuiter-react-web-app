@@ -10,9 +10,15 @@ function RegisterScreen() {
     const dispatch = useDispatch();
     const handleRegister = async () => {
     try {
-        await dispatch(registerThunk({ username, password }));
-        console.log(username);
-        navigate("/tuiter/profile");
+        const temp = await dispatch(registerThunk({ username, password }));
+        console.log("register-screen", username);
+        if (!temp) { 
+            navigate("/tuiter/profile");
+        }
+        else {
+            alert("User exists");
+            return;
+        }
         
     } catch (e) {
         alert(e);
