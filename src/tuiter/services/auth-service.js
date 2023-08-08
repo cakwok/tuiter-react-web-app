@@ -19,10 +19,15 @@ export const login = async ({ username, password }) => {
 };
 
 export const register = async ({ username, password }) => {
-    const response = await api.post(`${USERS_URL}/register`, { username, password });
-    const user = response.data;
-    console.log("user", user);
-    return user;
+    try {
+        const response = await api.post(`${USERS_URL}/register`, { username, password });
+        const user = response.data;
+        console.log("user", user);
+        return user;
+    } catch (e) {
+        console.log("auth-service catch");
+        throw e;
+    }    
 };
 
 export const logout = async () => {
@@ -31,8 +36,15 @@ export const logout = async () => {
 };
 
 export const profile = async () => {
-    const response = await api.post(`${USERS_URL}/profile`);
-    return response;
+    console.log("auth-service profile");
+    try {
+        const response = await api.post(`${USERS_URL}/profile`);
+        console.log("auth-service profile response", response.data.username);
+        return response.data.username;
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }    
 };
 export const updateUser = async (user) => {
     const response = await api.put(`${USERS_URL}/${user._id}`, user);

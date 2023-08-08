@@ -7,13 +7,14 @@ import { profileThunk, logoutThunk, updateUserThunk }
 function ProfileScreen() {
  const { currentUser } = useSelector((state) => state.user);
  const [ profile, setProfile ] = useState(currentUser);
+ console.log("profile-screen, profile", profile);
  const dispatch = useDispatch();
  const navigate = useNavigate();
  const save = async () => { await dispatch(updateUserThunk(profile)); };
 
  const loadProfile = async () => {
     const { payload } = await dispatch(profileThunk());
-    console.log(payload)
+    console.log("profile-screen payload", payload);
     setProfile(payload);
 };
  const lpe = async () => {

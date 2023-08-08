@@ -8,8 +8,8 @@ const authSlice = createSlice({
  extraReducers: {
    [loginThunk.fulfilled]: (state, { payload }) => {
      state.currentUser = payload;
+     console.log("state.currentUser", state.currentUser);
    },
-
    [loginThunk.rejected]: (state, { error }) => {
       throw error;
     },
@@ -17,6 +17,7 @@ const authSlice = createSlice({
    [logoutThunk.fulfilled]: (state) => {
     state.currentUser = null;
   },
+
   [profileThunk.fulfilled]: (state, { payload }) => {
     state.currentUser = payload;
   },
@@ -33,6 +34,10 @@ const authSlice = createSlice({
   [registerThunk.fulfilled]: (state, { payload }) => {
     state.currentUser = payload;
   },
+  [registerThunk.rejected]: (state, { error }) => {
+    throw error;
+  },
+  
  },
 });
 export default authSlice.reducer;
