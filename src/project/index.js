@@ -11,7 +11,7 @@ const API_KEY = process.env.REACT_APP_YELP_API_KEY;
 function Project() {
   return (
     <div>
-      <h1>Yelp</h1>
+      <img src = "https://s3-media0.fl.yelpcdn.com/assets/public/developers.yji-a68f827814c0cf08bcb3.png" />
       <Routes>
         <Route path="home" element={<Home />} />
         { /*
