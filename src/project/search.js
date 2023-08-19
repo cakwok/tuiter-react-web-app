@@ -63,16 +63,20 @@ function Search() {
             <table className="table">
                 <tbody>
                     <tr>
-                    {results.businesses.map((business) => (                           
-                                <td>
-                                    <Link to={`/project/details/${business.id}`}>
-                                        <div key={business.id}>
-                                            {business.name},
-                                            <img src={business.image_url} width="300" />     
-                                        </div>
-                                    </Link>
-                                </td>
-                        ))}
+                    {results.businesses ? (
+                        results.businesses.map((business) => (                           
+                                    <td>
+                                        <Link to={`/project/details/${business.id}`}>
+                                            <div key={business.id}>
+                                                {business.name},
+                                                <img src={business.image_url} width="300" />     
+                                            </div>
+                                        </Link>
+                                    </td>
+                            ))
+                    ) : (
+                        <p>Loading...</p>
+                    )}
                     </tr>
                 </tbody>
             </table>

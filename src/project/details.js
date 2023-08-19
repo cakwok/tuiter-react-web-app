@@ -7,7 +7,8 @@ function Details() {
     const { id } = useParams();
 
     const [restaurant, setRestaurant] = useState({});
-    const [location, setLocation] = useState({});
+    const [displayAddress, setAddress] = useState();
+    const [transaction, setTransaction] = useState();
 
     const fetchRestaurant = async () => {
         const restaurant = await service.getRestaurant(id);
@@ -21,8 +22,12 @@ function Details() {
 
         setRestaurant(modifiedResults);
 
-        const locationObject = restaurant.location;
-        setLocation(locationObject);
+        const displayAddress = restaurant.location.display_address.join(' ');
+        setAddress(displayAddress);
+
+        const transaction = restaurant.transactions.join(',');
+        console.log(transaction);
+        setTransaction(transaction);
       };
 
     useEffect(() => {
@@ -34,36 +39,43 @@ function Details() {
     return ( 
     <div>
         <div className="table-responsive">
+            <br/>
+            <h5>{restaurant.name}</h5>
             <table className="table">
                 <tbody>
-                <tr>
-                        {restaurant.photos.map((photo, index) => (
-                            <img key={index} src={photo} width="400" />
-                        ))}
-                    </tr>
                     <tr>
-                        <p style={{ display: 'inline' }}>
-                            {restaurant.categories.map((category, index) => (
-                                <span key={index}>
-                                    {category.title}
-                                    {index !== restaurant.categories.length - 1 && ', '}
-                                </span>
-                            ))}
-                        </p>
+                        {restaurant.photos ? (
+                            restaurant.photos.map((photo, index) => (
+                                <img key={index} src={photo} width="400" />
+                            ))
+                        ) : (
+                            <p>Loading...</p>
+                        )}
                     </tr>
-                    <tr>Phone: {restaurant.display_phone}</tr>
-                    <tr>Rating: {restaurant.rating}</tr>
-                    <tr>Price: {restaurant.price}</tr>
-                    <tr>
-                        <p style={{ display: 'inline' }}>
-                            {Object.values(location).map((value, index) => (
-                                <span key={index}>
-                                    {value}
-                                    {value !== "" && index !== location.length - 1 && ', '}
-                                </span>
-                            ))}
-                        </p>
-                    </tr>
+
+                    
+                        <tr>
+                            <p style={{ display: 'inline' }}>
+                                {restaurant.categories ? (
+                                    restaurant.categories.map((category, index) => (
+                                        <span key={index}>
+                                            {category.title}
+                                            {index !== restaurant.categories.length - 1 && ', '}
+                                        </span>
+                                    ))
+                                ) : (
+                                    <p>Loading...</p>
+                                )}
+                            </p>
+                        </tr>
+                     
+                        <tr><span>Phone: {restaurant.display_phone}</span></tr>
+                        <tr><span>Rating: {restaurant.rating}</span></tr>
+                        <tr><span>Price: {restaurant.price}</span></tr>
+                        <tr><span>Address: {displayAddress}</span></tr>
+                        <tr><span>Transactions: {transaction}</span></tr>
+                    
+
                 </tbody>
             </table>
         </div>
