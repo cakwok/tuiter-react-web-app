@@ -5,6 +5,8 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 function Search() {
 
+    const { searchTerm } = useParams();
+
     const navigate = useNavigate();
 
     const [results, setResults] = useState({});
@@ -12,13 +14,11 @@ function Search() {
 
     const apiUrl = 'http://localhost:4000/proxy/yelp';
 
-    const search = async () => {
+    const search = async (searchTerm) => {
 
-       const response = await service.fullSearch(query);
-       console.log("response", response);
-       
+       const qwe = searchTerm || query;
+       const response = await service.fullSearch(qwe);
        const results  = response;
-        
        
        const modifiedResults = {
             ...response,
@@ -33,8 +33,15 @@ function Search() {
     };
 
     useEffect(() => {
-        search();
-    }, []);
+        if (searchTerm) {
+            console.log("searchTerm", searchTerm)
+            setQuery(searchTerm);
+            search(searchTerm);
+        } else {
+            console.log("query", query);
+            search(query);
+        }
+    }, [searchTerm]);
 
     return (
         <div>

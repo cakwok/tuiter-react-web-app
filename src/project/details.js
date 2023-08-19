@@ -55,25 +55,27 @@ function Details() {
 
                     
                         <tr>
-                            <p style={{ display: 'inline' }}>
-                                {restaurant.categories ? (
-                                    restaurant.categories.map((category, index) => (
-                                        <span key={index}>
-                                            {category.title}
-                                            {index !== restaurant.categories.length - 1 && ', '}
-                                        </span>
-                                    ))
-                                ) : (
-                                    <p>Loading...</p>
-                                )}
-                            </p>
+                            <td>
+                                <p style={{ display: 'inline' }}>
+                                    {restaurant.categories ? (
+                                        restaurant.categories.map((category, index) => (
+                                            <span key={index}>
+                                                {category.title}
+                                                {index !== restaurant.categories.length - 1 && ', '}
+                                            </span>
+                                        ))
+                                    ) : (
+                                        <p>Loading...</p>
+                                    )}
+                                </p>
+                            </td>
                         </tr>
                      
-                        <tr><span>Phone: {restaurant.display_phone}</span></tr>
-                        <tr><span>Rating: {restaurant.rating}</span></tr>
-                        <tr><span>Price: {restaurant.price}</span></tr>
-                        <tr><span>Address: {displayAddress}</span></tr>
-                        <tr><span>Transactions: {transaction}</span></tr>
+                        <tr><td>Phone: {restaurant.display_phone}</td></tr>
+                        <tr><td>Rating: {restaurant.rating}</td></tr>
+                        <tr><td>Price: {restaurant.price}</td></tr>
+                        <tr><td>Address: {displayAddress}</td></tr>
+                        <tr><td>Transactions: {transaction}</td></tr>
                     
 
                 </tbody>
