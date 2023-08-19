@@ -56,6 +56,7 @@ function Search() {
             </button>
           </div>
 
+          <br /> 
           <h2>Restaurants</h2>          
           
           <div className="table-responsive">
@@ -64,10 +65,12 @@ function Search() {
                     <tr>
                     {results.businesses.map((business) => (                           
                                 <td>
-                                    <div key={business.id}>
-                                        {business.name},
-                                        <img src={business.image_url} width="300" />     
-                                    </div>
+                                    <Link to={`/project/details/${business.id}`}>
+                                        <div key={business.id}>
+                                            {business.name},
+                                            <img src={business.image_url} width="300" />     
+                                        </div>
+                                    </Link>
                                 </td>
                         ))}
                     </tr>
