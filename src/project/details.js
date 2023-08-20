@@ -40,7 +40,20 @@ function Details() {
     <div>
         <div className="table-responsive">
             <br/>
-            <h5>{restaurant.name}</h5>
+            <h5>{restaurant.name}
+            
+            <button
+                onClick={() => {
+                    service.userLikesRestaurant(restaurant.id, {
+                                                name: restaurant.name,
+                                                restaurantId: restaurant.id,
+                    });
+                }}
+                className="btn btn-success float-end"
+                >
+                Like
+            </button>
+            </h5>
             <table className="table">
                 <tbody>
                     <tr>
@@ -52,8 +65,6 @@ function Details() {
                             <p>Loading...</p>
                         )}
                     </tr>
-
-                    
                         <tr>
                             <td>
                                 <p style={{ display: 'inline' }}>
@@ -70,14 +81,11 @@ function Details() {
                                 </p>
                             </td>
                         </tr>
-                     
                         <tr><td>Phone: {restaurant.display_phone}</td></tr>
                         <tr><td>Rating: {restaurant.rating}</td></tr>
                         <tr><td>Price: {restaurant.price}</td></tr>
                         <tr><td>Address: {displayAddress}</td></tr>
-                        <tr><td>Transactions: {transaction}</td></tr>
-                    
-
+                        {transaction && (<tr><td>Transactions: {transaction}</td></tr>)}
                 </tbody>
             </table>
         </div>

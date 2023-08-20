@@ -34,11 +34,9 @@ function Search() {
 
     useEffect(() => {
         if (searchTerm) {
-            console.log("searchTerm", searchTerm)
             setQuery(searchTerm);
             search(searchTerm);
         } else {
-            console.log("query", query);
             search(query);
         }
     }, [searchTerm]);
@@ -55,8 +53,8 @@ function Search() {
             />
             <button className="btn btn-primary float-end"
                     onClick={() => {
-                        //navigate(`/project/search/${query}`);
-                        search();
+                        navigate(`/project/search/${query}`);
+                        //search();
                     }}
                     
             >Search
